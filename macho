@@ -1,0 +1,91 @@
+#!/bin/sh
+
+#
+# macho driver script
+#
+
+MYNAME=`basename $0`
+WORKDIR=`dirname $0`
+LISTDIR=$WORKDIR/lists
+DOCROOT=$WORKDIR/docroot
+INDENT=false
+VERBOSE=false
+PROCESS_ALL=false
+CORE="$WORKDIR/macho.core"
+LISP="sbcl --core $CORE --dynamic-space-size 1516 --noinform --disable-debugger"
+
+# SBCL complains about stack size limit
+ulimit -S -d 1000000
+
+usage () {
+    cat <<USAGE
+usage: $MYNAME [options] command
+commands:
+    update archives...
+        update archives
+    deliver archive
+        deliver message on standard input to archive
+options: 
+    --process-all process all archives instead of specifying infi
+    --verbose generate extra output
+USAGE
+    exit 1
+}
+
+#
+# parse command-line arguments
+#
+while [ $# -gt 0 ]; do 
+    case $1 in
+        --verbose)
+            VERBOSE=true
+            shift
+            ;;
+        --process-all)
+            PROCESS_ALL=true
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+#
+# figure out what command we're going to run
+#
+case $1 in
+    update)
+        COMMAND=$1
+        shift
+        ;;
+    deliver)
+        COMMAND=$1
+        shift;
+        umask 000
+        HOME=/does/not/exist; export HOME # keep sbcl from complaining about userinit
+        ;;
+    *)
+        echo "unknown command '$1'"
+        usage
+        ;;
+esac
+
+ARCHIVES=""
+if [ $PROCESS_ALL = "true" ]; then        
+    for D in root/archives/*; do
+        ARCHIVES="$ARCHIVES `basename $D`"
+    done
+else
+    if [ $# -lt 1 ]; then
+        usage
+    fi
+    ARCHIVES=$@
+fi
+
+if [ ! -f $CORE ]; then
+    echo "You must run 'make' to compile macho before you can run it."
+    exit 1
+fi
+
+cd $WORKDIR && exec $LISP --load $WORKDIR/src/macho.lisp $WORKDIR $VERBOSE $COMMAND $ARCHIVES

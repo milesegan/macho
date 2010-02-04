@@ -1,0 +1,29 @@
+0.5
+    * hacky (but working) fix for ISO-8859-1 encoded headers
+    * add per-archive properties support
+    * add rss feed support
+    * fix bugs in mime message re-parsing
+
+0.4
+    * javascript-triggered message navigation hotkeys
+    * per-archive custom stylesheets
+    * short-circuit index load if there's no new work
+    * added thread context view in message view
+    * truncate repeated subject lines
+    * build macho.core to speed up updates
+    * add new delivery mode
+    * reformat month indexes
+    * miscellaneous bugfixes
+
+0.3
+    * Include all library dependencies in /lib
+    * Drop cl-who in favor of static templates + html-template
+    * Fix several message parsing bugs.
+
+0.2
+    * Add multi-level message quoting with highlighting.
+    * Rewrite multipart message parsing routine.
+    * Use memory more efficiently.
+
+0.1
+    * First public release.

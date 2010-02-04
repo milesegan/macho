@@ -1,0 +1,2 @@
+0,15,30,45 * * * *  /data/macho/macho --process-all update
+10,40 * * * * /usr/bin/webalizer /var/log/httpd/access_log -o /var/www/html/stats

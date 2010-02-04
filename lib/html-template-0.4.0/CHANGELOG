@@ -1,0 +1,37 @@
+Version 0.4.0
+2006-04-03
+Added TMPL_UNLESS (requested by Igor Plekhov)
+
+Version 0.3.1
+2005-08-05
+Introduced *FORCE-DEFAULT*
+
+Version 0.3.0
+2005-07-03
+Introduced *TEMPLATE-OUTPUT* so template printers don't interfer with *STANDARD-OUTPUT* (proposed by Norman Werner)
+Small enhancements to docs
+
+Version 0.2.0
+2005-06-09
+Added :DO-NOT-CACHE option to CREATE-TEMPLATE-PRINTER
+Added clever DEFMETHOD trick by Peter Seibel
+Fixed bug in READ-UNTIL which doesn't affect HTML-TEMPLATE
+Better example in docs inspired by Bruce R. Lewis' critique on lisp-web
+Mention asdf-install in docs
+Added hyperdoc support
+Added :HTML-TEMPLATE to *FEATURES*
+
+Version 0.1.2
+2003-07-15
+Argh, typo in index.html... :(
+
+Version 0.1.1
+2003-07-15
+Cleaner use of restarts thanks to James Anderson and Kent M. Pitman
+Updated docs accordingly (removed stuff about OTHER-VALUE)
+Removed ECL specific stuff (no longer necessary due to recent ECL fixes by Juan Jose Garcia Ripoll)
+Corrected date of 0.1.0 release in CHANGELOG (don't laugh!)
+
+Version 0.1.0
+2003-07-15
+Initial release
