@@ -106,7 +106,7 @@ versions of these libraries if you plan to use them yourself in
 another project.
 
 The most recent versions of Edi Weitz's cl-ppcre and html-template
-libraries can be found at http://www.weitz.de.
+libraries can be found at [his site](http://www.weitz.de).
 
-Dan Barlow's handy net-telent-date library can be found at
-http://www.cliki.net/net-telent-date.
+Dan Barlow's handy net-telent-date library can be found
+at [cliki](http://www.cliki.net/net-telent-date)
